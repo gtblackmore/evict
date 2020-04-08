@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_011818) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "password_database"
+    t.string "password_digest"
   end
 
   create_table "landlords", force: :cascade do |t|
