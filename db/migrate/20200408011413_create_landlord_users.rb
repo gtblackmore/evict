@@ -1,4 +1,4 @@
-class CreateLandlordUser < ActiveRecord::Migration[6.0]
+class CreateLandlordUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :landlord_user do |t|
       t.string :first_name
