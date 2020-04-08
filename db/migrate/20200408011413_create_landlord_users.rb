@@ -4,7 +4,7 @@ class CreateLandlordUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.string :password_database
+      t.string :password_digest
     end
   end
 end
