@@ -1,5 +1,7 @@
 class ApplicationController < Sinatra::Base
 
+  use Rack::Flash
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -21,8 +23,8 @@ class ApplicationController < Sinatra::Base
     end
 
     def authentication_required
-      if !logged_in
-        flash[:note] = "You must be logged in."
+      if !logged_in?
+        flash[:notice] = "You must be logged in."
         redirect '/'
       end
     end
