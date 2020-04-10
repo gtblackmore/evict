@@ -4,7 +4,7 @@ class LoginController < ApplicationController
   end
 
   post '/login' do
-    @user = LandlordUser.find_by(:email => params[:email])
+    @user = User.find_by(:email => params[:email])
     if @user && @user.authenticate(params[:password])
       session["user_id"] = @user.id
       redirect '/'

@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= LandlordUser.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def authentication_required
@@ -27,6 +27,6 @@ class ApplicationController < Sinatra::Base
         flash[:notice] = "You must be logged in."
         redirect '/'
       end
-    end
+    end 
   end
 end

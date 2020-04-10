@@ -30,7 +30,7 @@ class PropertiesController < ApplicationController
     @property.zip = params[:zip]
     @property.county = params[:county]
     @property.rent = params[:rent]
-    @property.landlord_id = params[:landlord_id]
+    @property.entity_id = params[:entity_id]
     @property.save
     redirect to '/properties/#{@property.id}'
   end

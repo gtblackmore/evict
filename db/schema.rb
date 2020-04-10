@@ -10,35 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_011818) do
-
-  create_table "landlord_users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-  end
-
-  create_table "landlords", force: :cascade do |t|
-    t.string "company_name"
-    t.string "company_address"
-    t.string "company_city"
-    t.string "company_state"
-    t.string "company_zip"
-    t.string "contact_first_name"
-    t.string "contact_last_name"
-    t.string "contact_email"
-    t.string "contact_phone"
-  end
-
-  create_table "properties", force: :cascade do |t|
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "county"
-    t.integer "rent"
-    t.integer "landlord_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

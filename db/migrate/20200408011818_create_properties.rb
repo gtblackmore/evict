@@ -7,7 +7,6 @@ class CreateProperties < ActiveRecord::Migration[6.0]
       t.string :zip
       t.string :county
       t.integer :rent
-      t.integer :landlord_id
     end
   end
 end
