@@ -1,4 +1,6 @@
 class ApplicationController < Sinatra::Base
+  register Sinatra::Flash
+
 
   configure do
     set :public_folder, 'public'
@@ -8,7 +10,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    binding.pry
     erb :welcome
   end
 
@@ -18,7 +19,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @user ||= LandlordUser.find(session[:user.id]) if session[:user_id]
+      @current_user ||= LandlordUser.find(session[:user_id]) if session[:user_id]
     end
 
     def authentication_required
