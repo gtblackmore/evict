@@ -13,23 +13,23 @@ class EntityController < ApplicationController
   #end
 
   get '/entities/:id' do  #loads show page
-    @landlord = Entity.find_by(params[:id])
+    @landlord = current_user.entities.find(params[:id])
     erb :'entities/show'
   end
 
   get '/entities/:id/edit' do #loads edit form
-    @landlord = Entity.find_by(params[:id])
+    @landlord = current_user.entities.find(params[:id])
     erb :'entities/edit'
   end
 
   patch '/entities/:id' do  #updates a property
-    @landlord = Entity.find_by(params[:id])
-    @landlord.name = params[:company_name]
-    @landlord.address = params[:company_address]
-    @landlord.city = params[:company_city]
-    @landlord.state = params[:company_state]
-    @landlord.zip = params[:company_zip]
-    @landlord.type = params[:type]
+    @landlord = current_user.entities.find(params[:id])
+    @landlord.name = params[:name]
+    @landlord.address = params[:address]
+    @landlord.city = params[:city]
+    @landlord.state = params[:state]
+    @landlord.zip = params[:zip]
+    @landlord.entity_type = params[:entity_type]
     @landlord.email = params[:email]
     @landlord.phone = params[:phone]
     @landlord.save
