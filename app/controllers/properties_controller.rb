@@ -4,6 +4,7 @@ class PropertiesController < ApplicationController
   end
 
   get '/properties/new' do #loads new form
+    @landlord = Entity.all
     erb :'properties/new'
   end
 

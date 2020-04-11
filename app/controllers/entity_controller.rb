@@ -4,6 +4,7 @@ class EntityController < ApplicationController
   end
 
   get '/entities/new' do #loads new form
+    @user = @current_user
     erb :'entities/new'
   end
 
