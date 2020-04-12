@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <!-- <link rel="stylesheet" href="stylesheet.css" type="text/css"> -->
+  </head>
+  <body>
+    
+    
+    
+        <%= @user.first_name %>'s Properties
+        <table>    
+          <tr>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>County</th>
+          <th>Rent</th>   
+        </tr>
+          <% @user.properties.each do |property| %>
+          <tr>
+          <td><%= property.address %></td>
+          <td><%= property.city %></td>
+          <td><%= property.state %></td>
+          <td><%= property.zip %></td>
+          <td><%= property.county %></td>
+          <td>$<%= property.rent %></td>
+          </tr>
+          <% end %>
+
+
+         </tr>
+        </table>
+
+        <%= @user.first_name %>'s Entities
+        <table>    
+          <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip</th>
+          <th>Entity Type</th>
+          <th>Phone</th>   
+          <th>Email</th>   
+        </tr>
+          <% @user.entities.each do |entity| %>
+          <tr>
+          <td><%= entity.name %></td>
+          <td><%= entity.address %></td>
+          <td><%= entity.city %></td>
+          <td><%= entity.state %></td>
+          <td><%= entity.zip %></td>
+          <td><%= entity.entity_type %></td>
+          <td><%= entity.phone %></td>
+          <td><%= entity.email %></td>
+          </tr>
+          <% end %>
+
+
+         </tr>
+        </table>
+    
+        
+  </body>
+</html>
