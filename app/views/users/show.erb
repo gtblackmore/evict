@@ -32,6 +32,13 @@
           <td><%= property.zip %></td>
           <td><%= property.county %></td>
           <td>$<%= property.rent %></td>
+          <td><a class="button" href="<%= "/properties/#{property.id}/edit" %>">Edit Property</a></td>
+          <td>
+            <form method="post" action="/properties/<%= property.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" class="button" value="Delete Property">
+            </form>
+          </td>
           </tr>
           <% end %>
 
@@ -61,6 +68,15 @@
           <td><%= entity.entity_type %></td>
           <td><%= entity.phone %></td>
           <td><%= entity.email %></td>
+          <td><a class="button" href="<%= "/entities/#{entity.id}/edit" %>">Edit Entity</a></td>
+          <td>
+            <form method="post" action="/entities/<%= entity.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" class="button" value="Delete Entity">
+            </form>
+            
+          </td>
+  
           </tr>
           <% end %>
 

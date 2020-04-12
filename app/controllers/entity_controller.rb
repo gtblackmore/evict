@@ -33,18 +33,19 @@ class EntityController < ApplicationController
     @landlord.email = params[:email]
     @landlord.phone = params[:phone]
     @landlord.save
-    redirect to '/entities/#{@landlord.id}'
+    redirect to "/entities/#{@landlord.id}"
   end
 
   post '/entities' do  #creates a property
-    @landlord = Entity.create(params)
-    redirect to '/entities/#{@landlord.id}'
+    @landlord = current_user.entities.build(params)
+    @landlord.save
+    redirect to "/entities/#{@landlord.id}"
   end
 
-  delete 'entities/:id' do #destroy action
-    @landlord = Entity.find_by(params[:id])
-    @landlord.delete
-    redirect to '/entities/show'
+  delete '/entities/:id' do #destroy action
+    @landlord = Entity.find(params[:id])
+    @landlord.destroy
+    redirect to "/users/home"
   end
 end 
 

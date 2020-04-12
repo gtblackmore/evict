@@ -13,14 +13,18 @@ class UsersController < ApplicationController
     @user.password = params[:password]
 
     if @user.save
-      redirect to "/"
+      redirect to "/users/home"
     else
       erb :'users/new'
     end
   end
 
-  get '/users/:id' do
-    @user = User.find(params[:id])
-    erb :'users/show'
+  get '/users/home' do
+    @user = User.find(current_user.id)
+    if logged_in? && current_user = @user.id
+      erb :'users/show'
+    else
+      redirect to "/"
+    end
   end
 end
