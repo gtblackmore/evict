@@ -21,7 +21,8 @@
           <% if logged_in? %>
           Logged in as: <%= current_user.email %> |
           <a href="/logout">Logout</a> |
-          <a href="/properties/new">New Property</a>
+          <a href="/properties/new">New Property</a> |
+          <a href="/entities/new">New Entity</a>
           <% else %>
           <a href="/register">Register</a> |
           <a href="/login">Login</a>
