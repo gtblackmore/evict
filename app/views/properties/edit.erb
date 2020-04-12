@@ -1,1 +1,39 @@
-<h1> Hello </h1>
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+  <!-- <link rel="stylesheet" href="stylesheet.css" type="text/css"> -->
+  </head>
+  <body>
+    <form action="/properties/<%= @unit.id %>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+    <label for="address">Address:</label>
+    <input type="text" name="address" id="address" value="<%= @unit.address %>">
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" value="<%= @unit.city %>">
+    <label for="state">State:</label>
+    <input type="text" name="state" id="state" value="<%= @unit.state %>">
+    <label for="zip">Zip Code:</label>
+    <input type="text" name="zip" id="zip" value="<%= @unit.zip %>">
+    <label for="county">County:</label>
+    <input type="text" name="county" id="county" value="<%= @unit.county %>">
+    <label for="rent">Rent:</label>
+    <input type="text" name="rent" id="rent" value="<%= @unit.rent %>">
+    <label for="entity_id">Owner:</label>
+    <select name="entity_id" id="entity_id" value="<%= @unit.entity_id%>">
+      <% @landlord.each do |entity| %>
+        <option value="<%= entity.id %>"><%= entity.name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Update Property">
+  </form>
+  </body>
+</html>
+
+      
