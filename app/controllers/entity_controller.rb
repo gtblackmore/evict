@@ -39,7 +39,7 @@ class EntityController < ApplicationController
   post '/entities' do  #creates a property
     @landlord = current_user.entities.build(params)
     @landlord.save
-    redirect to "/entities/#{@landlord.id}"
+    redirect to "/users/home"
   end
 
   delete '/entities/:id' do #destroy action

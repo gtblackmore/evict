@@ -41,7 +41,7 @@ class PropertiesController < ApplicationController
 
   post '/properties' do  #creates a property
     @unit = Property.create(params)
-    redirect to "/properties/#{@unit.id}"
+    redirect to "/users/home"
   end
 
   delete '/properties/:id' do #destroy action
