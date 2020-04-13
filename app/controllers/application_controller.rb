@@ -27,6 +27,18 @@ class ApplicationController < Sinatra::Base
         flash[:notice] = "You must be logged in."
         redirect '/'
       end
-    end 
+    end
+    
+    def valid_params?
+      params.none? do |k, v|
+        v == ""
+      end
+    end
+    not_found do
+      status 404
+      erb :oops
+    end
+
+
   end
 end

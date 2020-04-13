@@ -19,29 +19,37 @@ class PropertiesController < ApplicationController
   #end
 
   get '/properties/:id/edit' do #loads edit form
-    @unit = current_user.properties.find(params[:id])
-    @landlord = current_user.entities
-     
-      erb :'properties/edit'
-    
+    @user = current_user
+    @unit = @user.properties.find(params[:id])
+    erb :'properties/edit'
   end
 
   patch '/properties/:id' do  #updates a property
-    @unit = Property.find(params[:id])
-    @unit.address = params[:address]
-    @unit.city = params[:city]
-    @unit.state = params[:state]
-    @unit.zip = params[:zip]
-    @unit.county = params[:county]
-    @unit.rent = params[:rent]
-    @unit.entity_id = params[:entity_id]
-    @unit.save
-    redirect to "/properties/#{@unit.id}"
+      @user = current_user
+      @unit = @user.properties.find(params[:id])
+      @unit.address = params[:address]
+      @unit.city = params[:city]
+      @unit.state = params[:state]
+      @unit.zip = params[:zip]
+      @unit.county = params[:county]
+      @unit.rent = params[:rent]
+      @unit.entity_id = params[:entity_id]
+      if valid_params? && @unit.save
+        redirect to "/users/home"
+      else
+        flash[:notice] = "Please fill out all fields"
+        erb :'properties/edit'
+      end 
   end
 
   post '/properties' do  #creates a property
-    @unit = Property.create(params)
-    redirect to "/properties/#{@unit.id}"
+    @unit = current_user.properties.build(params)
+    if valid_params? && @unit.save
+      redirect to "/users/home"
+    else
+      erb :"/properties/new"
+    end
+
   end
 
   delete '/properties/:id' do #destroy action

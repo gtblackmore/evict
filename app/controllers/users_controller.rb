@@ -12,9 +12,11 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
 
-    if @user.save
-      redirect to "/users/home"
+    if valid_params? && @user.save
+      flash[:notice] = "Please log in to continue."
+      redirect to "/"
     else
+      flash[:notice] = "Please complete all fields."
       erb :'users/new'
     end
   end

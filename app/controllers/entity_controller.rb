@@ -12,10 +12,10 @@ class EntityController < ApplicationController
   #  redirect to ''
   #end
 
-  get '/entities/:id' do  #loads show page
-    @landlord = current_user.entities.find(params[:id])
-    erb :'entities/show'
-  end
+  #get '/entities/:id' do  #loads show page
+  #  @landlord = current_user.entities.find(params[:id])
+  #  erb :'entities/show'
+  #end
 
   get '/entities/:id/edit' do #loads edit form
     @landlord = current_user.entities.find(params[:id])
@@ -32,14 +32,23 @@ class EntityController < ApplicationController
     @landlord.entity_type = params[:entity_type]
     @landlord.email = params[:email]
     @landlord.phone = params[:phone]
-    @landlord.save
-    redirect to "/entities/#{@landlord.id}"
+    if valid_params? && @landlord.save
+      redirect to "/users/home"
+    else
+      flash[:notice] = "Please fill out all fields."
+      erb :'entities/edit'
+    end
   end
 
   post '/entities' do  #creates a property
     @landlord = current_user.entities.build(params)
-    @landlord.save
-    redirect to "/entities/#{@landlord.id}"
+
+    if valid_params? && @landlord.save
+      redirect to "/users/home"
+    else
+      flash[:notice] = "Please fill out all fields."
+      erb :'entities/new'
+    end
   end
 
   delete '/entities/:id' do #destroy action

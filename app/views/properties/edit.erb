@@ -27,7 +27,7 @@
     <input type="text" name="rent" id="rent" value="<%= @unit.rent %>">
     <label for="entity_id">Owner:</label>
     <select name="entity_id" id="entity_id" value="<%= @unit.entity_id%>">
-      <% @landlord.each do |entity| %>
+      <% @user.entities.each do |entity| %>
         <option value="<%= entity.id %>"><%= entity.name %></option>
       <% end %>
     </select>
