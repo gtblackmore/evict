@@ -6,11 +6,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.new
-    @user.first_name = params[:first_name]
-    @user.last_name = params[:last_name]
-    @user.email = params[:email]
-    @user.password = params[:password]
+    
+    @user = User.new(params)
 
     if valid_params? && @user.save
       flash[:notice] = "Please log in to continue."
